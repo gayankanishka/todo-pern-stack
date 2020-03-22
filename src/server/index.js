@@ -3,9 +3,14 @@ const app = express();
 const cors = require('cors');
 const pool = require('./db');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 // adding middleware
 app.use(cors());
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // routes
 // create todo
