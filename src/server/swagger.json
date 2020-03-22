@@ -1,166 +1,144 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "version": "1.0.0",
-        "title": "PERN stack TODO API",
-        "description": "Built with PostgreSQL, ExpressJS, React and NodeJS",
-        "license": {
-            "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT"
-        }
-    },
-    "host": "localhost:5000",
-    "tags": [
-        {
-            "name": "Todos",
-            "description": "API for Todos in the system"
-        }
-    ],
-    "schemes": [
-        "http"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "produces": [
-        "application/json"
-    ],
-    "paths": {
-        "/todos": {
-            "post": {
-                "tags": [
-                    "Todos"
-                ],
-                "description": "Create new todo in system",
-                "parameters": [
-                    {
-                        "name": "description",
-                        "in": "body",
-                        "description": "Todo that we want to create",
-                        "schema": {
-                            "$ref": "#/definitions/PostTodo"
-                        }
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New todo is created",
-                        "schema": {
-                            "$ref": "#/definitions/PostTodo"
-                        }
-                    }
-                }
-            },
-            "get": {
-                "tags": [
-                    "Todos"
-                ],
-                "summary": "Get all users in system",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Todos"
-                        }
-                    }
-                }
-            }
-        },
-        "/todos/{todoId}": {
-            "parameters": [
-                {
-                    "name": "todoId",
-                    "in": "path",
-                    "required": true,
-                    "description": "ID of todo that we want to find",
-                    "type": "string"
-                }
-            ],
-            "get": {
-                "tags": [
-                    "Todos"
-                ],
-                "summary": "Get todo with given ID",
-                "responses": {
-                    "200": {
-                        "description": "Todo is found",
-                        "schema": {
-                            "$ref": "#/definitions/Todo"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "summary": "Delete todo with given ID",
-                "tags": [
-                    "Todos"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Todo is deleted",
-                        "schema": {
-                            "$ref": "#/definitions/Todo"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "summary": "Update todo with give ID",
-                "tags": [
-                    "Todos"
-                ],
-                "parameters": [
-                    {
-                        "name": "description",
-                        "in": "body",
-                        "description": "Todo with new description",
-                        "schema": {
-                            "$ref": "#/definitions/PostTodo"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Todo is updated",
-                        "schema": {
-                            "$ref": "#/definitions/Todo"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "Todo": {
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "todo_id": {
-                    "type": "string",
-                    "uniqueItems": true
-                },
-                "description": {
-                    "type": "string"
-                }
-            }
-        },
-        "Todos": {
-            "type": "array",
-            "$ref": "#/definitions/Todo"
-        },
-        "PostTodo": {
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "string"
-                }
-            }
-        }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "PERN stack TODO API",
+    "description": "Built with PostgreSQL, ExpressJS, React and NodeJS",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
     }
+  },
+  "host": "localhost:5000",
+  "tags": [
+    {
+      "name": "Todos",
+      "description": "API for Todos in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/todos": {
+      "post": {
+        "tags": ["Todos"],
+        "description": "Create new todo in system",
+        "parameters": [
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Todo that we want to create",
+            "schema": {
+              "$ref": "#/definitions/PostTodo"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New todo is created",
+            "schema": {
+              "$ref": "#/definitions/PostTodo"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Todos"],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        }
+      }
+    },
+    "/todos/{todoId}": {
+      "parameters": [
+        {
+          "name": "todoId",
+          "in": "path",
+          "required": true,
+          "description": "ID of todo that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Todos"],
+        "summary": "Get todo with given ID",
+        "responses": {
+          "200": {
+            "description": "Todo is found",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete todo with given ID",
+        "tags": ["Todos"],
+        "responses": {
+          "200": {
+            "description": "Todo is deleted",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update todo with give ID",
+        "tags": ["Todos"],
+        "parameters": [
+          {
+            "name": "description",
+            "in": "body",
+            "description": "Todo with new description",
+            "schema": {
+              "$ref": "#/definitions/PostTodo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo is updated",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "required": ["description"],
+      "properties": {
+        "todo_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Todos": {
+      "type": "array",
+      "$ref": "#/definitions/Todo"
+    },
+    "PostTodo": {
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }
