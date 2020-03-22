@@ -4,7 +4,7 @@ const InputTodo = () => {
 
     const [description, setDescription] = useState('');
 
-    const onSubmitForm = async (e) => {
+    async function onSubmitForm(e) {
         e.preventDefault();
         try {
             const body = { description };
@@ -19,7 +19,7 @@ const InputTodo = () => {
         } catch (error) {
             console.error(error.message);
         }
-    };
+    }
 
     return (
         <Fragment>
